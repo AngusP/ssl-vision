@@ -18,13 +18,14 @@ include_directories(${PROJECT_BINARY_DIR})
 include ( ${QT_USE_FILE} )
 
 include(src/shared/CMakeLists.txt.inc)
+
 include_directories(${PROJECT_SOURCE_DIR}/src/app)
 include_directories(${PROJECT_SOURCE_DIR}/src/app/gui)
 include_directories(${PROJECT_SOURCE_DIR}/src/app/plugins)
 include_directories(${PROJECT_SOURCE_DIR}/src/app/stacks)
 include_directories(~/.local/include)
 
-link_directories(~/.local ~/.local/lib)
+link_directories(~/.local)
 
 set (SRCS
 	src/app/capture_thread.cpp
@@ -153,16 +154,6 @@ target_link_libraries(${target} ${libs})
 set (client client)
 add_executable(${client} src/client/main.cpp )
 target_link_libraries(${client} ${libs})
-
-##build sdp test client
-set (sdpclient sdpclient)
-add_executable(${sdpclient} src/sdpTestClient/main.cpp )
-target_link_libraries(${sdpclient} ${libs})
-
-##build archie test client
-set (archieclient archieclient)
-add_executable(${archieclient} src/archieClient/main.cpp )
-target_link_libraries(${archieclient} ${libs})
 
 ##build logging client
 set (lclient logClient)

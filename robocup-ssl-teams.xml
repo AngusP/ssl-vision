@@ -11,7 +11,7 @@
 			true
 		</Var>
 		<Var name="Robot Height (mm)" type="double" minval="" maxval="">
-			125.000000
+			220.000000
 		</Var>
 		<Var name="Marker Image" type="list">
 			<Var name="Load Image File" type="bool">
@@ -67,34 +67,34 @@
 		</Var>
 		<Var name="Center Marker Settings" type="list">
 			<Var name="Expected Area Mean (sq-mm)" type="double" minval="" maxval="">
-				2500.000000
+				1000.000000
 			</Var>
 			<Var name="Expected StdDev (sq-mm)" type="double" minval="" maxval="">
-				900.000000
+				300.000000
 			</Var>
 			<Var name="Uniform" type="double" minval="" maxval="">
 				0.050000
 			</Var>
 			<Var name="Min Width (pixels)" type="int" minval="" maxval="">
-				4
+				2
 			</Var>
 			<Var name="Max Width (pixels)" type="int" minval="" maxval="">
-				30
+				100
 			</Var>
 			<Var name="Min Height (pixels)" type="int" minval="" maxval="">
 				4
 			</Var>
 			<Var name="Max Height (pixels)" type="int" minval="" maxval="">
-				30
+				100
 			</Var>
 			<Var name="Min Area (sq-pixels)" type="int" minval="" maxval="">
-				10
+				2
 			</Var>
 			<Var name="Max Area (sq-pixels)" type="int" minval="" maxval="">
-				600
+				1200
 			</Var>
 			<Var name="Duplicate Merge Distance (mm)" type="int" minval="" maxval="">
-				120
+				60
 			</Var>
 		</Var>
 		<Var name="Other Markers Settings" type="list">
@@ -102,19 +102,19 @@
 				3
 			</Var>
 			<Var name="Max Width (pixels)" type="int" minval="" maxval="">
-				40
+				100
 			</Var>
 			<Var name="Min Height (pixels)" type="int" minval="" maxval="">
 				3
 			</Var>
 			<Var name="Max Height (pixels)" type="int" minval="" maxval="">
-				40
+				100
 			</Var>
 			<Var name="Min Area (sq-pixels)" type="int" minval="" maxval="">
-				10
+				2
 			</Var>
 			<Var name="Max Area (sq-pixels)" type="int" minval="" maxval="">
-				600
+				1200
 			</Var>
 		</Var>
 		<Var name="Histogram Settings" type="list">
@@ -145,7 +145,7 @@
 		</Var>
 		<Var name="Pattern Fitting" type="list">
 			<Var name="Max Marker Center Dist (mm)" type="double" minval="" maxval="">
-				80.000000
+				1000.000000
 			</Var>
 			<Var name="Weight Area" type="double" minval="" maxval="">
 				0.100000

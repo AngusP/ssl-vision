@@ -427,6 +427,7 @@ void TeamDetector::findRobotsByModel(::google::protobuf::RepeatedPtrField< ::SSL
   MultiPatternModel::PatternDetectionResult res;
 
   while((reg = filter_team.getNext()) != 0) {
+    //printf("possible center for team %d at x: %0.0f, y: %0.0f\t", team_color_id, reg->cen_x, reg->cen_y);
     vector2d reg_img_center(reg->cen_x,reg->cen_y);
     vector3d reg_center3d;
     _camera_params.image2field(reg_center3d,reg_img_center,_robot_height);
@@ -434,10 +435,11 @@ void TeamDetector::findRobotsByModel(::google::protobuf::RepeatedPtrField< ::SSL
     //TODO add masking:
     //if(det.mask.get(reg->cen_x,reg->cen_y) >= 0.5){
     if (field_filter.isInFieldOrPlayableBoundary(reg_center)) {
+      //printf("in field\t\n");
       cen.set(reg,reg_center3d,getRegionArea(reg,_robot_height));
       int num_markers = 0;
 
-      reg_tree.startQuery(*reg,20.0);
+      reg_tree.startQuery(*reg,60.0);   // second parameter is max dist. by default set to 20
       double sd=0.0;
       CMVision::Region *mreg;
       while((mreg=reg_tree.getNextNearest(sd))!=0 && num_markers<MaxMarkers) { 
@@ -455,17 +457,19 @@ void TeamDetector::findRobotsByModel(::google::protobuf::RepeatedPtrField< ::SSL
           m.dist = ofs.length();
           m.angle = ofs.angle();
 
+          //printf("potential marker at dist: %0.0f\t", m.dist);
+
           if(m.dist>0.0 && m.dist<marker_max_dist){
             num_markers++;
           }
         }
       }
       reg_tree.endQuery();
-
+      //printf("num_markers: %d\t", num_markers);
       if(num_markers >= 2){
         CMPattern::PatternProcessing::sortMarkersByAngle(markers,num_markers);
         for(int i=0; i<num_markers; i++){
-          /*DEBUG CODE:
+          /*DEBUG CODE:*/
           char colorchar='?';
           if (markers[i].id==color_id_green) colorchar='g';
           if (markers[i].id==color_id_pink) colorchar='p';
@@ -473,13 +477,14 @@ void TeamDetector::findRobotsByModel(::google::protobuf::RepeatedPtrField< ::SSL
           if (markers[i].id==color_id_team) colorchar='t';
           if (markers[i].id==color_id_field_green) colorchar='f';
           if (markers[i].id==color_id_cyan) colorchar='c';
-          printf("%c ",colorchar);*/
+          printf("%c ",colorchar);//*/
           int j = (i + 1) % num_markers;
           markers[i].next_dist = dist(markers[i].loc,markers[j].loc);
           markers[i].next_angle_dist = angle_pos(angle_diff(markers[i].angle,markers[j].angle));
         }
 
         if (model.findPattern(res,markers,num_markers,_pattern_fit_params,_camera_params)) {
+              printf("\nROBOT FOUND!! Team %d robot %d at x: %0.1f, y: %0.1f\n", team_color_id, res.id, cen.loc.x, cen.loc.y);
               robot=addRobot(robots,res.conf,_max_robots*2);
               if (robot!=0) {
                 //setup robot:
@@ -494,6 +499,7 @@ void TeamDetector::findRobotsByModel(::google::protobuf::RepeatedPtrField< ::SSL
         }
       }
     }
+    //printf("\n");
   }
   //remove items with 0-confidence:
   stripRobots(robots);

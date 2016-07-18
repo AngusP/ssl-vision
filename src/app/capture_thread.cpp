@@ -34,13 +34,13 @@ CaptureThread::CaptureThread(int cam_id)
   control->addChild( (VarType*) (c_reset  = new VarTrigger("reset bus","Reset")));
   control->addChild( (VarType*) (c_auto_refresh= new VarBool("auto refresh params",true)));
   control->addChild( (VarType*) (c_refresh= new VarTrigger("re-read params","Refresh")));
-  control->addChild( (VarType*) (captureModule= new VarStringEnum("Capture Module","DC 1394")));
+  control->addChild( (VarType*) (captureModule= new VarStringEnum("Capture Module","Video4Linux 2")));
   captureModule->addFlags(VARTYPE_FLAG_NOLOAD_ENUM_CHILDREN);
-  captureModule->addItem("DC 1394");
+  //captureModule->addItem("DC 1394");
   captureModule->addItem("Video4Linux 2");
   captureModule->addItem("Read from files");
   captureModule->addItem("Generator");
-  settings->addChild( (VarType*) (dc1394 = new VarList("DC1394")));
+  //settings->addChild( (VarType*) (dc1394 = new VarList("DC1394")));
   settings->addChild( (VarType*) (v4l2 = new VarList("Video4Linux 2")));
   settings->addChild( (VarType*) (fromfile = new VarList("Read from files")));
   settings->addChild( (VarType*) (generator = new VarList("Generator")));
@@ -55,7 +55,7 @@ CaptureThread::CaptureThread(int cam_id)
   stack = 0;
   counter=new FrameCounter();
   capture=0;
-  captureDC1394 = new CaptureDC1394v2(dc1394,camId);
+  //captureDC1394 = new CaptureDC1394v2(dc1394,camId);
   captureV4L2 = new CaptureV4L2(v4l2);
   captureFiles = new CaptureFromFile(fromfile);
   captureGenerator = new CaptureGenerator(generator);
@@ -80,7 +80,7 @@ VarList * CaptureThread::getSettings() {
 
 CaptureThread::~CaptureThread()
 {
-  delete captureDC1394;
+  //delete captureDC1394;
   delete captureV4L2;
   delete captureFiles;
   delete captureGenerator;
@@ -107,11 +107,11 @@ void CaptureThread::selectCaptureMethod() {
     new_capture = captureFiles;
   } else if(captureModule->getString() == "Generator") {
     new_capture = captureGenerator;
-  } else if(captureModule->getString() == "Video4Linux 2") {
+  } else { //if(captureModule->getString() == "Video4Linux 2") {
     new_capture = captureV4L2;
-  } else {
-    new_capture = captureDC1394;
-  }
+  } //else {
+  //  new_capture = captureDC1394;
+  //}
 
   if (old_capture!=0 && new_capture!=old_capture && old_capture->isCapturing()) {
     capture_mutex.unlock();

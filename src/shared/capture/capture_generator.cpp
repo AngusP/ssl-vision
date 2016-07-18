@@ -99,12 +99,12 @@ bool CaptureGenerator::copyAndConvertFrame ( const RawImage & src, RawImage & ta
 
   if ( output_fmt == src_fmt ) {
     if ( src.getData() != 0 ) memcpy ( target.getData(),src.getData(),src.getNumBytes() );
-  } else if ( src_fmt == COLOR_RGB8 && output_fmt == COLOR_YUV422_UYVY ) {
+  }/* else if ( src_fmt == COLOR_RGB8 && output_fmt == COLOR_YUV422_UYVY ) {
     if ( src.getData() != 0 ) {
       dc1394_convert_to_YUV422 ( src.getData(), target.getData(), src.getWidth(), src.getHeight(),
                                  DC1394_BYTE_ORDER_UYVY, DC1394_COLOR_CODING_RGB8, 8 );
     }
-  } else {
+  } */else {
     fprintf ( stderr,"Cannot copy and convert frame...unknown conversion selected from: %s to %s\n",
               Colors::colorFormatToString ( src_fmt ).c_str(),
               Colors::colorFormatToString ( output_fmt ).c_str() );

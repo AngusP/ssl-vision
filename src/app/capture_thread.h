@@ -21,7 +21,7 @@
 
 #ifndef CAPTURE_THREAD_H
 #define CAPTURE_THREAD_H
-#include "capturedc1394v2.h"
+//#include "capturedc1394v2.h"
 #include "capturefromfile.h"
 #include "capture_generator.h"
 #include <QThread>
@@ -48,7 +48,7 @@ protected:
   VisionStack * stack;
   FrameCounter * counter;
   CaptureInterface * capture;
-  CaptureInterface * captureDC1394;
+//  CaptureInterface * captureDC1394;
   CaptureInterface * captureV4L2;
   CaptureInterface * captureFiles;
   CaptureInterface * captureGenerator;
@@ -57,7 +57,7 @@ protected:
   bool _kill;
   int camId;
   VarList * settings;
-  VarList * dc1394;
+  //VarList * dc1394;
   VarList * v4l2;
   VarList * generator;
   VarList * fromfile;

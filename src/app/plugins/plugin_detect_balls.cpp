@@ -294,6 +294,8 @@ ProcessResult PluginDetectBalls::process ( FrameData * data, RenderOptions * opt
       ball->set_y ( field_pos_3d.y );
       ball->set_pixel_x ( it->reg->cen_x );
       ball->set_pixel_y ( it->reg->cen_y );
+
+      printf ( "possible ball at x: %0.2f, y: %0.2f, (confidence %0.2f)\n", field_pos_3d.x, field_pos_3d.y, it->conf );
     }
 
   }
