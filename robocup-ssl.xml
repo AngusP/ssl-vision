@@ -323,17 +323,17 @@
 			</Var>
 			<Var name="Video4Linux 2" type="list">
 				<Var name="Camera Controls" type="list">
-					<Var name="Brightness" type="int" minval="30" maxval="255">
-						65
+					<Var name="Brightness" type="int" minval="0" maxval="65280">
+						15000
 					</Var>
-					<Var name="Contrast" type="int" minval="0" maxval="10">
-						9
+					<Var name="Contrast" type="int" minval="0" maxval="65408">
+						30000
 					</Var>
-					<Var name="Saturation" type="int" minval="0" maxval="200">
-						120
+					<Var name="Saturation" type="int" minval="0" maxval="65408">
+						50000
 					</Var>
-					<Var name="Hue" type="int" minval="-16000" maxval="16000">
-						45
+					<Var name="Hue" type="int" minval="0" maxval="65280">
+						14000
 					</Var>
 					<Var name="White Balance Temperature, Auto" type="bool">
 						false
@@ -342,16 +342,16 @@
 						5
 					</Var>
 					<Var name="White Balance Temperature" type="int" minval="2800" maxval="10000">
-						3000
+						2800
 					</Var>
 					<Var name="Sharpness" type="int" minval="0" maxval="50">
-						20
+						0
 					</Var>
 					<Var name="Backlight Compensation" type="int" minval="0" maxval="10">
 						0
 					</Var>
 					<Var name="Exposure (Absolute)" type="int" minval="5" maxval="20000">
-						400
+						20
 					</Var>
 					<Var name="Exposure, Auto Priority" type="bool">
 						false
@@ -375,13 +375,49 @@
 						false
 					</Var>
 					<Var name="Chroma Gain" type="int" minval="0" maxval="127">
-						60
+						50
 					</Var>
 					<Var name="Focus (absolute)" type="int" minval="0" maxval="40">
 						0
 					</Var>
 					<Var name="Focus, Auto" type="bool">
 						false
+					</Var>
+					<Var name="Mute" type="bool">
+						false
+					</Var>
+					<Var name="Color Killer" type="bool">
+						false
+					</Var>
+					<Var name="Comb Filter" type="bool">
+						true
+					</Var>
+					<Var name="Auto Mute" type="bool">
+						false
+					</Var>
+					<Var name="Luma Decimation Filter" type="bool">
+						false
+					</Var>
+					<Var name="AGC Crush" type="bool">
+						true
+					</Var>
+					<Var name="VCR Hack" type="bool">
+						false
+					</Var>
+					<Var name="Whitecrush Lower" type="int" minval="0" maxval="255">
+						127
+					</Var>
+					<Var name="Whitecrush Upper" type="int" minval="0" maxval="255">
+						207
+					</Var>
+					<Var name="UV Ratio" type="int" minval="0" maxval="100">
+						50
+					</Var>
+					<Var name="Full Luma Range" type="bool">
+						false
+					</Var>
+					<Var name="Coring" type="int" minval="0" maxval="3">
+						0
 					</Var>
 				</Var>
 				<Var name="convert to mode" type="stringenum">
@@ -394,7 +430,7 @@
 					</Var>
 				</Var>
 				<Var name="Device" type="string">
-					/dev/video1
+					/dev/video0
 				</Var>
 			</Var>
 			<Var name="Read from files" type="list">
@@ -428,7 +464,7 @@
 				</Var>
 				<Var name="Capture Settings" type="list">
 					<Var name="Framerate (FPS)" type="double" minval="" maxval="">
-						60.000000
+						25.000000
 					</Var>
 					<Var name="Width (pixels)" type="int" minval="" maxval="">
 						780
@@ -971,37 +1007,37 @@
 		<Var name="Camera Calibrator" type="list">
 			<Var name="Camera Parameters" type="list">
 				<Var name="focal length" type="double" minval="" maxval="">
-					518.668587
+					500.000000
 				</Var>
 				<Var name="principal point x" type="double" minval="" maxval="">
-					437.139338
+					325.000000
 				</Var>
 				<Var name="principal point y" type="double" minval="" maxval="">
-					260.182668
+					245.000000
 				</Var>
 				<Var name="distortion" type="double" minval="0.000000" maxval="2.000000">
 					0.000000
 				</Var>
 				<Var name="q0" type="double" minval="" maxval="">
-					0.996732
+					0.000000
 				</Var>
 				<Var name="q1" type="double" minval="" maxval="">
-					-0.063853
+					2.000000
 				</Var>
 				<Var name="q2" type="double" minval="" maxval="">
-					0.032627
+					0.000000
 				</Var>
 				<Var name="q3" type="double" minval="" maxval="">
-					0.037192
+					0.000000
 				</Var>
 				<Var name="tx" type="double" minval="" maxval="">
-					-269.201859
+					0.000000
 				</Var>
 				<Var name="ty" type="double" minval="" maxval="">
-					-157.653302
+					0.000000
 				</Var>
 				<Var name="tz" type="double" minval="0.000000" maxval="5000.000000">
-					1189.000000
+					0.000000
 				</Var>
 			</Var>
 			<Var name="Field Half Configuration" type="list">
@@ -1104,34 +1140,34 @@
 			</Var>
 			<Var name="Calibration Parameters" type="list">
 				<Var name="left corner in image x" type="double" minval="" maxval="">
-					105.000000
+					42.000000
 				</Var>
 				<Var name="left corner in image y" type="double" minval="" maxval="">
-					350.000000
+					445.000000
 				</Var>
 				<Var name="right corner in image x" type="double" minval="" maxval="">
-					80.000000
+					40.000000
 				</Var>
 				<Var name="right corner in image y" type="double" minval="" maxval="">
-					91.000000
+					30.000000
 				</Var>
 				<Var name="left centerline in image x" type="double" minval="" maxval="">
-					334.000000
+					327.000000
 				</Var>
 				<Var name="left centerline in image y" type="double" minval="" maxval="">
-					322.000000
+					465.000000
 				</Var>
 				<Var name="right centerline in image x" type="double" minval="" maxval="">
-					309.000000
+					332.000000
 				</Var>
 				<Var name="right centerline in image y" type="double" minval="" maxval="">
-					64.000000
+					20.000000
 				</Var>
 				<Var name="initial distortion" type="double" minval="" maxval="">
 					1.000000
 				</Var>
 				<Var name="camera height" type="double" minval="" maxval="">
-					1200.000000
+					100.000000
 				</Var>
 				<Var name="line search corridor width" type="double" minval="" maxval="">
 					50.000000
@@ -1244,16 +1280,16 @@
 			</Var>
 			<Var name="Video4Linux 2" type="list">
 				<Var name="Camera Controls" type="list">
-					<Var name="Brightness" type="int" minval="-64" maxval="64">
+					<Var name="Brightness" type="int" minval="0" maxval="65280">
 						0
 					</Var>
-					<Var name="Contrast" type="int" minval="0" maxval="100">
+					<Var name="Contrast" type="int" minval="0" maxval="65408">
 						57
 					</Var>
-					<Var name="Saturation" type="int" minval="0" maxval="100">
+					<Var name="Saturation" type="int" minval="0" maxval="65408">
 						64
 					</Var>
-					<Var name="Hue" type="int" minval="-180" maxval="180">
+					<Var name="Hue" type="int" minval="0" maxval="65280">
 						0
 					</Var>
 					<Var name="Gamma" type="int" minval="100" maxval="500">
@@ -1267,6 +1303,45 @@
 					</Var>
 					<Var name="Exposure, Auto Priority" type="bool">
 						false
+					</Var>
+					<Var name="Mute" type="bool">
+						false
+					</Var>
+					<Var name="Chroma AGC" type="bool">
+						false
+					</Var>
+					<Var name="Color Killer" type="bool">
+						false
+					</Var>
+					<Var name="Comb Filter" type="bool">
+						false
+					</Var>
+					<Var name="Auto Mute" type="bool">
+						true
+					</Var>
+					<Var name="Luma Decimation Filter" type="bool">
+						false
+					</Var>
+					<Var name="AGC Crush" type="bool">
+						true
+					</Var>
+					<Var name="VCR Hack" type="bool">
+						false
+					</Var>
+					<Var name="Whitecrush Lower" type="int" minval="0" maxval="255">
+						127
+					</Var>
+					<Var name="Whitecrush Upper" type="int" minval="0" maxval="255">
+						207
+					</Var>
+					<Var name="UV Ratio" type="int" minval="0" maxval="100">
+						50
+					</Var>
+					<Var name="Full Luma Range" type="bool">
+						false
+					</Var>
+					<Var name="Coring" type="int" minval="0" maxval="3">
+						0
 					</Var>
 				</Var>
 				<Var name="convert to mode" type="stringenum">
